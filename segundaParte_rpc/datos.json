@@ -1,0 +1,42 @@
+{
+    "especialidades":[
+        {"id": 1, "nombre": "Cardiologia"},
+        {"id": 2, "nombre": "Dermatologia"},
+        {"id": 3, "nombre": "Neurologia"}
+    ],
+
+    "centros":[
+        {"id": 1, "nombre": "Hospital Alicante"},
+        {"id": 2, "nombre": "Hospital La Fe"},
+        {"id": 3, "nombre": "Hospital San Juan"}
+    ],
+
+    "medicos":[
+        {"id": 1, "nombre": "Marina", "apellidos": "Garcia", "login": "marina", "password": "marina123", "especialidad": 0, "centro":1},
+        {"id": 2, "nombre": "Maria", "apellidos": "Sanchez", "login": "maria", "password": "maria123", "especialidad": 0, "centro":2},
+        {"id": 3, "nombre": "Isa", "apellidos": "Vicente", "login": "isa", "password": "isa123", "especialidad": 0, "centro":3},
+        {"id": 4, "nombre": "Daniela", "apellidos": "Fernanadez", "login": "dani", "password": "dani123", "especialidad": 1, "centro":3}
+    ],
+
+    "expedientes":[
+        {
+            "id": 1,
+            "map": 1,
+            "me": 0,
+            "especialidad": 1,
+            "sip": "123456789",
+            "nombre": "Daniela",
+            "apellidos": "Garcia Gonzalez ",
+            "fecha_nacimiento": "2005-07-23",
+            "genero": "M",
+            "observaciones": "",
+            "solicitud": "Necesidad consulta",
+            "respuesta": "",
+            "fecha_creacion": "2024-02-16T12:00:00",
+            "fecha_asignacion": null,
+            "fecha_resolucion": null
+          }
+    ]
+
+
+}
