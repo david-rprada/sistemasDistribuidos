@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>App ME</title>
+		<style>
+            .seccion{display: none;}
+            .activa{display: block;}
+        </style>
+	</head>
+
+<body>
+	<script src="rest.js"></script> 
+	<script src="rpc.js"></script>
+	<script src="main.js"></script>
+
+	<div id="login_me" class="seccion activa">
+		<h1>Acceso</h1>
+		<p><label for="loginME">Usuario:</label><input id="loginME" type="text"</p>
+		<p><label for="passwordME">Contraseña:</label><input id="passwordME" type="password"</p>
+		<p><button onclick="entrar()">Entrar</button></p>
+        <p><button onclick="registrarse()">Registrarse</button></p>
+	</div>
+
+	<div id="menu_principal" class="seccion">
+		<h1>Inicio</h1>
+		<h2>Bienvenido/a <span id="nombre_doctor_ME"></span></h2><button onclick="modificar_datos_me()">Editar datos</button>
+		<p><button onclick="asignar_expediente()">Asignar Expediente</button></p>
+        <p><button onclick="mostrar_expedientes_asignados()">Mostrar expedientes asignados</button></p>
+		<p><button onclick="volver_login()">Salir</button></p>
+	</div>
+
+	<div id="registro_nuevo_ME" class="seccion">
+		<h1>Registro</h1>
+		<p><label for="nombre">Nombre:</label><input id="nombre" type="text"</p>
+		<p><label for="apellidos">Apellidos:</label><input id="apellidos" type="text"</p>
+		<p><label for="loginME1">Login:</label><input id="loginME1" type="text"</p>
+		<p><label for="passwordME1">Contraseña:</label><input id="passwordME1" type="text"</p>
+		<p>Centro:
+			<select name='centros' id='centros'></select>
+		</p>
+		<p>Especialidad:
+			<select name='especialidad' id='especialidad'></select>
+		</p>
+		<p><button onclick="guardar_nuevo_me()">Guardar</button></p>
+        <p><button onclick="boton_volver_login()">Cancelar</button></p>
+	</div>
+
+	<div id="cambiar_datos_me" class="seccion">
+		<h1>DATOS MÉDICO</h1>
+		<h3>Modifique lo deseado</h3>
+		<p><label for="nombre1">Nombre:</label><input id="nombre1" type="text"/></p>
+		<p><label for="apellidos1">Apellidos:</label><input id="apellidos1" type="text"/></p>
+		<p><label for="loginME2">Login:</label><input id="loginME2" type="text"/></p>
+		<p><label for="passwordME2">Contraseña:</label><input id="passwordME2" type="text"/></p>
+		<p>Centro:
+			<select name='centros1' id='centros1'></select>
+		</p>
+		<p>Especialidad:
+			<select name='especialidad1' id='especialidad1'></select>
+		</p>
+
+		<p><button onclick="guardar_datos_modificados()">Guardar</button></p>
+		<p><button onclick="boton_volver_inicio()">Cancelar</button></p>
+	</div>
+
+</body>
+
+</html>
