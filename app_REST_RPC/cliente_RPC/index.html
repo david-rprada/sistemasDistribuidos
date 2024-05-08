@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
 	<head>
-		<meta charset="utf8">
 		<title>App ME</title>
+		<meta charset="utf8">
+		<link rel="stylesheet" type="text/css" href="estilo_rpc.css">
 		<style>
             .seccion{display: none;}
             .activa{display: block;}
@@ -64,6 +65,72 @@
 		<p><button onclick="boton_volver_inicio()">Cancelar</button></p>
 	</div>
 
-</body>
+	<div id="asignar_expediente" class="seccion">
+		<h1>ASIGNAR EXPEDIENTE</h1>
+		<h3>Listado de expedientes:</h3>
+		<div id="lista_expedientes"></div>
+		<p><button onclick="boton_volver_menuP()">Volver</button></p>
 
+	</div>
+
+	<div id="expediente_asignado" class="seccion">
+		<h1>EXPEDIENTE</h1>
+		<p><label for ="id1">ID:</label><input id = "id1" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "medEsp">Med.Esp.:</label><input id="medEsp" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p>Especialidad:
+			<select name='especialidades2' id='especialidades2'></select>
+		</p>
+		<p><label for = "sip">SIP:</label><input id="sip" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "nombrenuevoexp">Nombre:</label><input id="nombrenuevoexp" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "apellidosnuevoexp">Apellidos:</label><input id="apellidosnuevoexp" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "fnacimientonuevoexp">Fecha Nacimiento:</label><input id="fnacimientonuevoexp" type="date" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "genero">Genero:</label><input id="genero" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+
+		</select>
+		<p><label for = "observaciones">Observaciones:</label><input id="observaciones" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "solicitud">Solicitud:</label><input id="solicitud" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "respuesta">Respuesta:</label><input id="respuesta" type="text" readonly style= "cursor: not-allowed;"/></p>
+		<p><label for = "fsolicitud">F.Solicitud:</label><input id="fsolicitud" type="datetime"readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "fasignacion">F.Asignacion:</label><input id="fasignacion" type="datetime" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "fresolucion">F.Resolucion:</label><input id="fresolucion" type="datetime" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+
+		<p><button onclick="boton_volver_listado()">Volver al listado</button></p>
+		
+	</div>
+
+	<div id="expedientes_asignados" class="seccion">
+		<h1>EXPEDIENTES ASIGNADOS</h1>
+		<h3>Listado de expedientes:</h3>
+		<div id="lista_expedientes_asignados"></div>
+		<p><button onclick="boton_volver_menuP()">Volver</button></p>
+
+	</div>
+
+	<div id="ver_expediente_asignado" class="seccion">
+		<h1>EXPEDIENTE</h1>
+		<p><label for ="id2">ID:</label><input id = "id2" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "medEsp1">Med.Esp.:</label><input id="medEsp1" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p>Especialidad:
+			<select name='especialidades3' id='especialidades3'></select>
+		</p>
+		<p><label for = "sip1">SIP:</label><input id="sip1" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "nombre2">Nombre:</label><input id="nombre2" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "apellidos2">Apellidos:</label><input id="apellidos2" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "fnacimiento2">Fecha Nacimiento:</label><input id="fnacimiento2" type="date" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "genero2">Genero:</label><input id="genero2" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+
+		</select>
+		<p><label for = "observaciones2">Observaciones:</label><input id="observaciones2" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "solicitud2">Solicitud:</label><input id="solicitud2" type="text" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "respuesta2">Respuesta:</label><input id="respuesta2" type="text"/></p>
+		<p><label for = "fsolicitud2">F.Solicitud:</label><input id="fsolicitud2" type="datetime"readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "fasignacion2">F.Asignacion:</label><input id="fasignacion2" type="datetime" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+		<p><label for = "fresolucion2">F.Resolucion:</label><input id="fresolucion2" type="datetime" readonly style="background-color: #a7a7b2; cursor: not-allowed;"/></p>
+
+		<p><button onclick="resolverExpediente()">Resolver</button></p>
+		<p><button onclick="boton_volver_listado2()">Volver al listado</button></p>
+
+
+
+</body>
 </html>
