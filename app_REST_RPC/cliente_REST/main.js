@@ -322,12 +322,12 @@ function guardar_nuevo_expediente(){
     var sip = document.getElementById("sip").value;
     var nombre = document.getElementById("nombrenuevoexp").value;
     var apellidos = document.getElementById("apellidosnuevoexp").value;
-    var fechaNacimientoString = document.getElementById("fnacimientonuevoexp").value;
-    var fecha_nacimiento = new Date(fechaNacimientoString);
+    var fecha_nacimiento = document.getElementById("fnacimientonuevoexp").value;
+    //var fecha_nacimiento = new Date(fechaNacimientoString);
     var genero = document.getElementById("genero").value;
     var observaciones = document.getElementById("observaciones").value;
     var solicitud = document.getElementById("solicitud").value;
-    var fsolicitud = document.getElementById("fsolicitud").value;
+    //var fsolicitud = document.getElementById("fsolicitud").value;
 
     var nuevoExpediente = {
         especialidad: especialidad_seleccionada_valor ,
@@ -338,7 +338,6 @@ function guardar_nuevo_expediente(){
         genero: genero,
         observaciones: observaciones,
         solicitud: solicitud,
-        fecha_creacion: fsolicitud,
         map: id_map // Utilizamos el ID del MAP almacenado en la variable global
     };
 
