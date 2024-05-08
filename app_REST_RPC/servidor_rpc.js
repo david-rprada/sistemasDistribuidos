@@ -85,6 +85,7 @@ function crearME(datos){
     }
 }
 
+//Actualiza los datos del médico con identificador id_med
 function actualizarme(id_medico, datos){
     var idME = id_medico;
     console.log("este es el id del medico a actualizar:", idME)
@@ -109,6 +110,92 @@ function actualizarme(id_medico, datos){
 
     return medico;
 }
+
+//Array de expedientes sin ME y de esa especialidad (solo id, map, fecha_creacion)
+//Para asignar un expediente
+function obtenerExpDisponibles(id_especialidad) {
+    const expedientesDisponibles = expedientes.filter(expediente => !expediente.me && expediente.especialidad === id_especialidad);
+  
+    if (expedientesDisponibles.length === 0) {
+      return null; // Devolver null si no se encuentran expedientes disponibles
+    }
+
+    const expedientesFormateados = expedientesDisponibles.map(expediente => {
+        const medico = medicos.find(m => m.id === expediente.map);
+        return {
+          id: expediente.id,
+          map: expediente.map,
+          fecha_creacion: expediente.fecha_creacion,
+          nombre_map: medico ? `${medico.nombre} ${medico.apellidos}` : 'Médico no encontrado'
+        };
+      });
+  
+    return expedientesFormateados;
+  }
+  
+
+// Array de expedientes asignados a ese ME (todos los datos)
+// se pasa como body el id_me
+function obtenerExpAsignados(id_me) {
+    // Buscar el médico
+    const medicoExistente = medicos.find(medico => medico.id === id_me);
+    
+    // Si el médico no existe, devolver null
+    if (!medicoExistente) {
+      return null;
+    }
+  
+    // Filtrar expedientes asignados al médico
+    const expedientesAsignados = expedientes.filter(expediente => expediente.medico === id_me);
+    
+    // Si el médico no tiene expedientes asignados, devolver null
+    if (expedientesAsignados.length === 0) {
+      return null
+    }
+  
+    // Devolver los expedientes asignados al médico
+    return expedientesAsignados
+}
+
+//Se asignará a un ME el expediente y se rellenará la fecha_asignacion. 
+//Retorna un boleano de si ha ido bien.
+function asignarExp(id_exp, id_me){
+    console.log("este es el id_me", id_me);
+    console.log("este es el id_exp:", id_exp);
+    const expediente = expedientes.find(expediente => expediente.id === id_exp);
+    if (expediente && !expediente.me) {
+      expediente.me = id_me;
+      expediente.fecha_asignacion = new Date().toISOString();
+      return true;
+    } else {
+      return false; // No se pudo asignar el expediente
+    } 
+} 
+
+//Array de expedientes asignados a ese ME (todos los datos)
+function obtenerExpAsignados(id_me) {
+    const expedientesAsignados = expedientes.filter(expediente => expediente.me === id_me);
+    return expedientesAsignados;
+}
+
+// Resuelve un expediente poniendo la respuesta y asignado la 
+//fecha_resolucion
+
+function resolverExp(id_exp, respuesta){
+    console.log("este es el id que se me pasa", id_exp);
+    const expediente = expedientes.find(expediente => expediente.id === id_exp);
+    if (expediente) {
+      expediente.respuesta = respuesta;
+      expediente.fecha_resolucion = new Date().toISOString();
+      return true;
+    } else {
+      return false; // No se pudo resolver el expediente
+    }
+}
+
+
+
+  
 
 
 
@@ -153,4 +240,8 @@ app.register(obtenerEspecialidades);
 app.register(obtenerDatosMedico);
 app.register(crearME);
 app.register(actualizarme);
+app.register(obtenerExpDisponibles);
+app.register(obtenerExpAsignados);
+app.register(asignarExp);
+app.register(resolverExp);
 

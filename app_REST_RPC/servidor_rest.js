@@ -248,15 +248,14 @@ app.put("/api/expediente/:id", function (req, res) {
 
 
 // Objeto para mantener un seguimiento de los últimos IDs de expedientes asociados a cada MAP
-var ultimoIdExpedientePorMap = {};
 // Endpoint para crear un nuevo expediente asociado a un MAP
 app.post("/api/map/:id/expedientes", function(req, res) {
     var idMap = req.params.id;
     var nuevoExpediente = req.body;
-    console.log(nuevoExpediente);
+    console.log("Este es el nuevo expediente",nuevoExpediente);
 
     // Validación para evitar datos prohibidos previamente
-    var datosProhibidos = ["id", /*"fecha_creacion"*/, "fecha_asignacion", "fecha_resolucion"];
+    var datosProhibidos = ["id", "fecha_creacion", "fecha_asignacion", "fecha_resolucion"];
     for (var i = 0; i < datosProhibidos.length; i++) {
         if (nuevoExpediente.hasOwnProperty(datosProhibidos[i])) {
             return res.status(400).json({ error: "No se permiten datos prohibidos: " + datosProhibidos[i] });
@@ -266,7 +265,7 @@ app.post("/api/map/:id/expedientes", function(req, res) {
     // Obtener el último ID de expediente asociado a este MAP utilizando un bucle for
     var ultimoIdExpediente = 0;
     for (var i = 0; i < expedientes.length; i++) {
-        if (expedientes[i].map == idMap && expedientes[i].id > ultimoIdExpediente) {
+        if (expedientes[i].id > ultimoIdExpediente) {
             ultimoIdExpediente = expedientes[i].id;
         }
     }
@@ -287,11 +286,13 @@ app.post("/api/map/:id/expedientes", function(req, res) {
         sip: nuevoExpediente.sip,
         nombre: nuevoExpediente.nombre,
         apellidos: nuevoExpediente.apellidos,
-        fecha_nacimiento: nuevoExpediente.fechaNacimiento,
+        fecha_nacimiento: nuevoExpediente.fecha_nacimiento,
         genero: nuevoExpediente.genero,
         observaciones: nuevoExpediente.observaciones,
         solicitud: nuevoExpediente.solicitud,
-        fecha_creacion: nuevoExpediente.fecha_creacion
+        respuesta: null,
+        fecha_creacion: new Date(),
+        fecha_resolucion : null
     };
 
     // Agregar el nuevo expediente a la base de datos
@@ -300,6 +301,9 @@ app.post("/api/map/:id/expedientes", function(req, res) {
     // Devolver el ID del nuevo expediente
     res.status(201).json(expedientes);
 });
+
+
+
 
 /*VERSION MEJORADA PUT NUEVO EXPEDIENTE
 app.post("/api/map/:id/expedientes", function (req, res) {
