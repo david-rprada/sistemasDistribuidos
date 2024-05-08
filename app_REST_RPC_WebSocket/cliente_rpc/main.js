@@ -300,6 +300,33 @@ function cargarEspecialidades2() {
 }
 
 
+const WebSocket = require('ws');
+
+// Conectar al servidor WebSocket en el puerto 8080
+const ws = new WebSocket('ws://localhost:8080');
+
+// Manejar conexión exitosa
+ws.on('open', function open() {
+  console.log('Conectado al servidor');
+  
+  // Escuchar entrada de usuario y enviar mensajes al servidor
+  process.stdin.on('data', function (data) {
+    ws.send(data.toString().trim());
+  });
+});
+
+// Manejar mensajes del servidor
+ws.on('message', function incoming(message) {
+  console.log('Mensaje recibido del servidor: %s', message);
+});
+
+// Manejar cierre de conexión
+ws.on('close', function close() {
+  console.log('Desconectado del servidor');
+});
+
+
+
 
 
 function asignado(id){

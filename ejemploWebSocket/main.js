@@ -38,7 +38,12 @@ conexion.addEventListener("message", function (event) {
 function saludar() {
     conexion.send(JSON.stringify({
         operacion: "saludar",
-        origen: nombre
+        origen: nombre,
+        texto: "Saludos de parte de ",
+        fecha: new Date().getTime(),
+        idME: document.getElementById
+
+
     }));
 }
 
